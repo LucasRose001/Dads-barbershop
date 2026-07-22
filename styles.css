@@ -181,42 +181,59 @@ p { margin: 0 0 1em; }
 .btn-ghost { background: transparent; color: var(--cream); border-color: var(--line); }
 .btn-ghost:hover { border-color: var(--cream); }
 
-/* Barber pole art */
+/* Logo + spinning barber-pole ring */
 .hero-art { display: flex; align-items: center; justify-content: center; padding: 24px; }
-.pole {
+.logo-ring {
   position: relative;
-  width: 60px;
-  height: 320px;
-  border-radius: 30px;
-  background: #fff;
-  overflow: hidden;
-  box-shadow: var(--shadow);
+  width: 300px;
+  height: 300px;
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.55));
 }
-.pole-stripes {
+.logo-ring-stripes {
   position: absolute;
-  inset: 20px 0;
-  background: repeating-linear-gradient(
-    -35deg,
-    #fff 0 14px,
-    var(--red) 14px 28px,
-    #fff 28px 42px,
-    #1c4a9c 42px 56px
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    #d1282f 0deg 20deg,
+    #fff 20deg 30deg,
+    #1c4a9c 30deg 50deg,
+    #fff 50deg 60deg
   );
-  animation: barber 6s linear infinite;
+  animation: ring-spin 14s linear infinite;
 }
-@keyframes barber {
-  from { background-position: 0 0; }
-  to   { background-position: 0 84px; }
-}
-.pole-cap {
+.logo-ring-inner {
   position: absolute;
-  left: -6px; right: -6px;
-  height: 22px;
-  background: linear-gradient(#e8dfce, #b3a892);
-  border-radius: 4px;
+  inset: 26px;
+  border-radius: 50%;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: inset 0 0 0 2px #fff;
 }
-.pole-cap.top { top: -6px; }
-.pole-cap.bottom { bottom: -6px; }
+.logo-ring-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+.logo-ring-fallback {
+  font-family: var(--font-script);
+  color: var(--cream);
+  font-size: 2.6rem;
+  line-height: 1;
+  display: none;
+}
+.logo-ring-inner.no-image .logo-ring-fallback { display: inline-block; }
+
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
 
 /* ---------- Sections ---------- */
 .section {
@@ -709,5 +726,5 @@ blockquote {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .pole-stripes { animation: none; }
+  .logo-ring-stripes { animation: none; }
 }
