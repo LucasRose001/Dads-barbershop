@@ -656,6 +656,28 @@ blockquote {
   .footer-nav { justify-content: center; }
 }
 
+/* Mobile-only tweaks: 2x4 + 1 services layout, 4 reviews shown */
+@media (max-width: 720px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .service { padding: 18px 16px; }
+  .service h3 { font-size: 1rem; }
+  .service .price { font-size: 1.2rem; }
+  .service-meta { font-size: 0.68rem; margin-bottom: 8px; }
+  .service > p:last-child { font-size: 0.85rem; line-height: 1.4; }
+  .service .tag {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 0.6rem;
+    padding: 2px 6px;
+  }
+  .services-grid .service:last-child { grid-column: 1 / -1; }
+
+  .reviews-grid .review:nth-child(n+5) { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .pole-stripes { animation: none; }
