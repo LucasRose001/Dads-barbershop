@@ -266,14 +266,29 @@ p { margin: 0 0 1em; }
 }
 .service {
   background: var(--bg-2);
-  border: 1px solid var(--line);
+  border: 1.5px solid rgba(209, 40, 47, 0.4);
   border-radius: var(--radius);
   padding: 24px;
-  transition: border-color .15s, transform .15s;
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  transition: border-color .15s, transform .1s, box-shadow .15s, background .15s;
 }
 .service:hover {
   border-color: var(--red);
   transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(209, 40, 47, 0.22);
+  background: #1a1616;
+}
+.service:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(209, 40, 47, 0.15);
+  background: #221818;
+}
+.service:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
 }
 .service-top {
   display: flex;
@@ -564,6 +579,7 @@ blockquote {
 }
 
 /* Book / Fresha handoff */
+#book { scroll-margin-top: 100px; }
 .section-book .section-head { margin-bottom: 40px; }
 .book-card {
   max-width: 720px;
