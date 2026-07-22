@@ -51,6 +51,8 @@ p { margin: 0 0 1em; }
   margin: 0 0 1em;
 }
 .eyebrow.red { color: var(--red); }
+.eyebrow.eyebrow-cream { color: var(--cream-2); }
+.h2-red { color: var(--red); }
 
 /* ---------- Header ---------- */
 .site-header {
