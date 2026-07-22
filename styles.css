@@ -370,9 +370,15 @@ blockquote {
 .products-brands {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 48px;
+}
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 .brand-chip {
   font-family: var(--font-display);
@@ -382,11 +388,15 @@ blockquote {
   letter-spacing: 0.02em;
   padding: 4px 8px;
 }
-.brand-dot {
-  color: var(--red);
-  font-size: 1.5rem;
-  font-weight: 700;
+.brand-link {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  transition: color .15s;
 }
+.brand-link:hover { color: var(--red); }
 
 /* Reviews */
 .reviews-grid {
