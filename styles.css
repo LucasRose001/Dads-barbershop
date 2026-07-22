@@ -78,9 +78,11 @@ p { margin: 0 0 1em; }
   align-items: center;
   gap: 12px;
   font-family: var(--font-display);
-  transition: opacity .15s;
+  transition: opacity .15s, transform .15s;
+  cursor: pointer;
 }
-.brand:hover { opacity: 0.8; }
+.brand:hover { opacity: 0.65; transform: translateY(-1px); }
+.brand:active { transform: translateY(0); }
 .brand-logo {
   width: 44px;
   height: 44px;

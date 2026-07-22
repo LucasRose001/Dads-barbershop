@@ -13,4 +13,12 @@ nav.querySelectorAll('a').forEach(a => {
   });
 });
 
+document.querySelectorAll('a[href="#top"]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    history.replaceState(null, '', location.pathname);
+  });
+});
+
 document.getElementById('year').textContent = new Date().getFullYear();
