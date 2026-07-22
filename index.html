@@ -22,7 +22,7 @@
 
 <header class="site-header" id="top">
   <div class="nav-inner">
-    <a class="brand" href="#top" aria-label="Dad's Barbershop home">
+    <a class="brand" href="#top" aria-label="Dad's Barbershop home" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'',location.pathname);">
       <img src="assets/logo-circular-badge-cropped.png" alt="Dad's Barbershop" class="brand-logo" onerror="this.style.display='none'" />
       <span class="brand-text">
         <span class="brand-name">Dad's</span>
@@ -349,7 +349,7 @@
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <a class="footer-brand" href="#top" aria-label="Back to top">
+    <a class="footer-brand" href="#top" aria-label="Back to top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'',location.pathname);">
       <img src="assets/logo-circular-badge-cropped.png" alt="" class="footer-logo" onerror="this.style.display='none'" />
       <div>
         <p class="footer-name">Dad's Barbershop</p>
