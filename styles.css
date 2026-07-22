@@ -391,8 +391,14 @@ blockquote {
 /* Reviews */
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: 20px;
+}
+@media (min-width: 720px) {
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 980px) {
+  .reviews-grid { grid-template-columns: repeat(3, 1fr); }
 }
 .review {
   background: var(--bg-2);
