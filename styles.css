@@ -334,13 +334,66 @@ p { margin: 0 0 1em; }
   margin-top: 32px;
 }
 
-/* About */
-.about-grid {
+/* Meet Austin */
+.meet-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 5fr 7fr;
   gap: 56px;
-  align-items: center;
+  align-items: start;
 }
+.meet-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(160deg, #1c1c1c 0%, #0e0e0e 100%);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.meet-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.meet-photo-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  color: var(--muted);
+  font-size: 6.5rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  opacity: 0.35;
+}
+.meet-photo.no-image {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(209, 40, 47, 0.08) 0%, transparent 60%),
+    linear-gradient(160deg, #1c1c1c 0%, #0e0e0e 100%);
+}
+.meet-photo.no-image .meet-photo-fallback { display: flex; }
+
+.meet-copy p { color: var(--cream-2); font-size: 1.05rem; }
+.meet-copy p:first-child { margin-top: 0; }
+
+.meet-quote {
+  max-width: 780px;
+  margin: 64px auto 0;
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 40px 48px 32px;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+.meet-quote blockquote {
+  margin: 8px 0 16px;
+}
+
+/* Legacy about-copy fallback (still used elsewhere) */
 .about-copy p { color: var(--cream-2); font-size: 1.05rem; }
 .about-bullets {
   list-style: none;
@@ -723,6 +776,9 @@ blockquote {
 
   .section, .section-dark { padding: 64px 24px; }
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .meet-grid { grid-template-columns: 1fr; gap: 32px; }
+  .meet-photo { aspect-ratio: 1 / 1; max-width: 380px; margin: 0 auto; }
+  .meet-quote { padding: 32px 28px; }
   .fresha-wrap, .fresha-wrap iframe { min-height: 640px; }
 
   .footer-inner { grid-template-columns: 1fr; text-align: center; }
