@@ -747,29 +747,38 @@ blockquote {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
-  .nav-toggle { display: flex; }
-  .primary-nav {
-    position: absolute;
-    top: 100%; left: 0; right: 0;
-    background: var(--bg);
+  .nav-toggle { display: none; }
+  .nav-inner {
     flex-direction: column;
-    align-items: stretch;
-    padding: 12px 24px 20px;
-    gap: 4px;
-    border-bottom: 1px solid var(--line);
-    transform: translateY(-8px);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform .2s, opacity .2s;
+    gap: 10px;
+    padding: 10px 16px 12px;
+    align-items: center;
   }
-  .primary-nav.open {
-    transform: translateY(0);
+  .primary-nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    transform: none;
     opacity: 1;
     pointer-events: auto;
   }
-  .primary-nav a { padding: 12px 4px; border-bottom: 1px solid var(--line); }
-  .primary-nav a:last-child { border-bottom: 0; }
-  .primary-nav .nav-cta { text-align: center; margin-top: 8px; }
+  .primary-nav a {
+    font-size: 0.86rem;
+    padding: 4px 2px;
+    border: 0;
+  }
+  .primary-nav .nav-cta {
+    padding: 7px 14px;
+    font-size: 0.82rem;
+  }
+  section[id] { scroll-margin-top: 130px; }
 
   .hero {
     grid-template-columns: 1fr;
