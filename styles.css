@@ -752,7 +752,51 @@ blockquote {
   .reviews-grid .review:nth-child(n+5) { display: none; }
 }
 
+/* Sticky mobile "Book" floating action button */
+.mobile-book-fab {
+  display: none;
+}
+@media (max-width: 860px) {
+  .mobile-book-fab {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 20px;
+    background: var(--red);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 12px 32px rgba(209, 40, 47, 0.45);
+    transition: transform .25s ease, opacity .25s ease, box-shadow .15s ease;
+  }
+  .mobile-book-fab:active {
+    transform: translateY(2px);
+    box-shadow: 0 6px 16px rgba(209, 40, 47, 0.4);
+  }
+  .mobile-book-fab.hidden {
+    transform: translateY(140%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .fab-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+    transform: rotate(-15deg);
+  }
+  body { padding-bottom: 80px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .logo-ring-stripes { animation: none; }
+  .mobile-book-fab { transition: opacity .15s ease; }
 }

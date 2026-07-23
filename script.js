@@ -21,4 +21,13 @@ document.querySelectorAll('a[href="#top"]').forEach(link => {
   });
 });
 
+const fab = document.querySelector('.mobile-book-fab');
+const bookSection = document.getElementById('book');
+if (fab && bookSection && 'IntersectionObserver' in window) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => fab.classList.toggle('hidden', entry.isIntersecting));
+  }, { threshold: 0.2 });
+  obs.observe(bookSection);
+}
+
 document.getElementById('year').textContent = new Date().getFullYear();
