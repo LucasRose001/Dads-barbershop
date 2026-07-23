@@ -1,3 +1,6 @@
 scratch/
 handoff-docs/
 node_modules/
+leads.csv
+*.leads.csv
+.env
