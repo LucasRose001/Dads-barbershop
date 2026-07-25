@@ -877,8 +877,95 @@ blockquote {
   body { padding-bottom: 80px; }
 }
 
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.11s; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.17s; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.23s; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.29s; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.35s; }
+.reveal-stagger.is-visible > *:nth-child(7) { transition-delay: 0.41s; }
+.reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 0.47s; }
+.reveal-stagger.is-visible > *:nth-child(9) { transition-delay: 0.53s; }
+
+/* ---------- Hero entrance ---------- */
+.hero-inner > * {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: hero-fade-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-inner > .eyebrow    { animation-delay: 0.10s; }
+.hero-inner > h1          { animation-delay: 0.22s; }
+.hero-inner > .lede       { animation-delay: 0.38s; }
+.hero-inner > .hero-cta   { animation-delay: 0.54s; }
+.hero-inner > .hero-proof { animation-delay: 0.70s; }
+.hero-art {
+  opacity: 0;
+  animation: hero-fade-in 1s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards;
+}
+@keyframes hero-fade-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Review star sparkle ---------- */
+.review .stars .star {
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.35s ease,
+              transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.review.is-visible .stars .star {
+  opacity: 1;
+  transform: scale(1);
+}
+.review.is-visible .stars .star:nth-child(1) { transition-delay: 0.15s; }
+.review.is-visible .stars .star:nth-child(2) { transition-delay: 0.24s; }
+.review.is-visible .stars .star:nth-child(3) { transition-delay: 0.33s; }
+.review.is-visible .stars .star:nth-child(4) { transition-delay: 0.42s; }
+.review.is-visible .stars .star:nth-child(5) { transition-delay: 0.51s; }
+.review {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color .15s;
+}
+.review.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .logo-ring-stripes { animation: none; }
   .mobile-book-fab { transition: opacity .15s ease; }
+  .reveal, .reveal-stagger > *, .hero-inner > *, .hero-art,
+  .review, .review .stars .star {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }
