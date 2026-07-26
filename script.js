@@ -73,3 +73,38 @@ document.getElementById('year').textContent = new Date().getFullYear();
     observer.observe(el);
   });
 })();
+
+// ===== Today's day highlights in the hours table =====
+(function () {
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const today = days[new Date().getDay()];
+  document.querySelectorAll('.hours-row').forEach(row => {
+    const dayCell = row.querySelector('span:first-child');
+    if (dayCell && dayCell.textContent.trim() === today) {
+      row.classList.add('today');
+    }
+  });
+})();
+
+// ===== Back-to-top floating button (desktop only) =====
+(function () {
+  if (window.matchMedia('(max-width: 860px)').matches) return;
+  const btn = document.createElement('button');
+  btn.className = 'back-to-top';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'Back to top');
+  btn.innerHTML = '↑';
+  document.body.appendChild(btn);
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      btn.classList.toggle('visible', window.scrollY > 600);
+      ticking = false;
+    });
+  }, { passive: true });
+})();
