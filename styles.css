@@ -957,10 +957,125 @@ blockquote {
   transform: translateY(0);
 }
 
+/* ---------- Today's day highlights in hours ---------- */
+.hours-row.today {
+  background: rgba(209, 40, 47, 0.08);
+  border-left: 3px solid var(--red);
+  padding-left: 21px;
+}
+.hours-row.today span:first-child {
+  color: var(--red);
+  font-weight: 700;
+}
+
+/* ---------- Nav link underline slide on hover ---------- */
+.primary-nav a:not(.nav-cta) {
+  position: relative;
+  overflow: hidden;
+}
+.primary-nav a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--red);
+  transform: translateX(-101%);
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.primary-nav a:not(.nav-cta):hover::after {
+  transform: translateX(0);
+}
+
+/* ---------- Book button subtle pulse ---------- */
+.btn-book-big {
+  animation: book-pulse 3.5s ease-in-out infinite;
+}
+@keyframes book-pulse {
+  0%, 100% {
+    box-shadow: 0 8px 24px rgba(209, 40, 47, 0.35);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(209, 40, 47, 0.55),
+                0 0 0 6px rgba(209, 40, 47, 0.08);
+  }
+}
+
+/* ---------- Barber pole speeds up on hover ---------- */
+.logo-ring:hover .logo-ring-stripes {
+  animation-duration: 3.5s;
+}
+
+/* ---------- "From Dad." handwriting draws in ---------- */
+.hero-inner h1 .script {
+  display: inline-block;
+  clip-path: inset(0 100% 0 0);
+  animation: script-write 0.95s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+  animation-delay: 1.05s;
+}
+@keyframes script-write {
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* ---------- Back-to-top floating button (desktop only) ---------- */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  border: 0;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(209, 40, 47, 0.35);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.15s;
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+}
+@media (max-width: 860px) {
+  .back-to-top { display: none; }
+}
+
+/* ---------- Map grayscale → color on scroll into view ---------- */
+.map-wrap iframe {
+  transition: filter 0.9s ease;
+}
+.map-wrap.is-visible iframe {
+  filter: grayscale(0) contrast(1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .logo-ring-stripes { animation: none; }
+  .logo-ring:hover .logo-ring-stripes { animation: none; }
   .mobile-book-fab { transition: opacity .15s ease; }
+  .btn-book-big { animation: none; }
+  .primary-nav a:not(.nav-cta)::after { transition: none; }
+  .hero-inner h1 .script {
+    clip-path: none !important;
+    animation: none !important;
+  }
+  .back-to-top { transition: opacity 0.15s ease !important; }
+  .map-wrap iframe { transition: none !important; }
   .reveal, .reveal-stagger > *, .hero-inner > *, .hero-art,
   .review, .review .stars .star {
     opacity: 1 !important;
