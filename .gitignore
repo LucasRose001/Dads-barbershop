@@ -1,3 +1,9 @@
 scratch/
 handoff-docs/
 node_modules/
+
+# lead-scanner
+lead-scanner/.env
+lead-scanner/.venv/
+lead-scanner/leads*.csv
+lead-scanner/__pycache__/
