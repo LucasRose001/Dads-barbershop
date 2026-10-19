@@ -377,7 +377,13 @@ p { margin: 0 0 1em; }
 }
 .meet-photo.no-image .meet-photo-fallback { display: flex; }
 
-.meet-copy p { color: var(--cream-2); font-size: 1.05rem; }
+.meet-copy p { color: var(--cream-2); font-size: 0.98rem; line-height: 1.65; margin: 0 0 0.85em; }
+.meet-copy p.meet-lead { font-size: 1.12rem; color: var(--white, #fff); }
+.meet-copy p.meet-signoff { font-style: italic; }
+@media (max-width: 640px) {
+  .meet-copy p { font-size: 0.94rem; line-height: 1.6; }
+  .meet-copy p.meet-lead { font-size: 1.04rem; }
+}
 .meet-copy p:first-child { margin-top: 0; }
 
 .meet-quote {
